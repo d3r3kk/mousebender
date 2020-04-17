@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Check format with Black
-        if: startswith(matrix.python_version, '3.5') == False
+        if: startswith(matrix.python_version, '3.5') == "False"
         run: |
           echo ${{ matrix.python_version }}
 
