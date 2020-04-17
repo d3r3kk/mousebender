@@ -15,15 +15,15 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python_version: ['3.5', '3.6', '3.7', '3.8']
+        python_version: ['3.5', '3.6']
     env:
       PYTHONDEVMODE: 1
 
     steps:
       - name: Check format with Black
         if: ${{ matrix.python_version}} != '3.5'
-          run: |
-            echo "Derek"
+        run: |
+          echo "Derek"
 
   #- uses: actions/checkout@v1
 
