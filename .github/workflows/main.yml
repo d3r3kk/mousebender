@@ -44,7 +44,7 @@ jobs:
   #       poetry run mypy mousebender
 
     - name: Check format with Black
-      if: ${{ matrix.python_version}} != '3.5'
+        if: ${{ matrix.python_version}} != '3.5'
       run: |
         echo "Derek"
 
