@@ -88,7 +88,6 @@ def parse_repo_index(html):
     return parser.mapping
 
 
-#@dataclasses.dataclass(frozen=True)
 class ArchiveLink:
 
     """Data related to a link to an archive file."""
@@ -104,8 +103,8 @@ class ArchiveLink:
         filename: str,
         url: str,
         requires_python: packaging.specifiers.SpecifierSet,
-        hash: Optional[Tuple[str, str]]=None,
-        gpg_sig: Optional[bool]=None,
+        hash: Optional[Tuple[str, str]] = None,
+        gpg_sig: Optional[bool] = None,
     ):
         self.filename = filename
         self.url = url
@@ -114,10 +113,15 @@ class ArchiveLink:
         self.gpg_sig = gpg_sig
 
     def __eq__(self, other):
-        return isinstance(other, ArchiveLink) and self.filename == other.filename and \
-            self.url == other.url and self.requires_python == other.requires_python and \
-            self.hash_ == other.hash_ and self.gpg_sig == other.gpg_sig
-        
+        return (
+            isinstance(other, ArchiveLink)
+            and self.filename == other.filename
+            and self.url == other.url
+            and self.requires_python == other.requires_python
+            and self.hash_ == other.hash_
+            and self.gpg_sig == other.gpg_sig
+        )
+
 
 class _ArchiveLinkHTMLParser(html.parser.HTMLParser):
     def __init__(self):
@@ -156,7 +160,6 @@ class _ArchiveLinkHTMLParser(html.parser.HTMLParser):
         # PEP 503:
         # A repository MAY include a data-gpg-sig attribute on a file link with
         # a value of either true or false ...
-        #if gpg_sig := attrs.get("data-gpg-sig"):
         gpg_sig = attrs.get("data-gpg-sig")
         if gpg_sig:
             gpg_sig = gpg_sig == "true"
