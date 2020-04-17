@@ -21,9 +21,9 @@ jobs:
 
     steps:
       - name: Check format with Black
-        if: ${{ matrix.python_version}} != '3.5'
+        if: startswith(matrix.python_version, '3.5') == False
         run: |
-          echo "Derek"
+          echo ${{ matrix.python_version }}
 
   #- uses: actions/checkout@v1
 
