@@ -7,10 +7,10 @@ on:
     types: [opened, synchronize, reopened, closed]
 
 jobs:
-  test:
+  tests:
     if: github.event.action != 'closed' || github.event.pull_request.merged
 
-    name: Test on node ${{ matrix.python_version }}
+    name: Test Python ${{ matrix.python_version }}
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
